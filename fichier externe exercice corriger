@@ -1,0 +1,62 @@
+#exercice3 corrigé "travail dans fichier externe"
+def nombre_ligne(nom):
+    fichier = open(nom,"r",encoding="latin1")
+    lignes=fichier.readlines()
+    nombre=len(lignes)
+    fichier.close()
+    return nombre
+
+#def remplacement(nom): #crée une copie du fichier d'origine en sautant les
+ #   #ligne scommencant par #ligne10
+#    fichier=open(nom,"r",encoding="latin1")
+#    fichier2=open(copie.txt,"w",encoding="utf8")
+#    n=nombre_ligne(nom)
+#    for k in range(n):
+#        ligne= fichier.readline()
+#        if ligne[0]!="#":
+#            fichier2.write(ligne)#recopie la ligne dans fichier2 donc dans
+#            #copie.txt
+#        fichier.close()
+#        fichier2.close()#ligne20
+        
+def phrase_plus_longue (nom): #utilise l'algo de recherche de maximum
+    fichier = open(nom,"r",encoding="latin1")
+    ligne = fichier.readlines()
+    phrase = ligne[0]
+    for k in range(len(ligne)):
+        if len(ligne[k])>len(phrase):
+            phrase = ligne[k]
+    return phrase #retourne le résultat calculé par la fonction mais
+                      #l'oublie dès fin de la fonction        #ligne30
+    
+#prgm principal
+texte=nombre_ligne("monfichier_ron.txt")#permet d'affecter
+#variable nombre à texte avant la fin de la fonction donc avant qu'il 
+#soit oublié
+print (texte)
+machin = phrase_plus_longue("monfichier_ron.txt")#permet d'affecter
+#variable phrase à machin avant la fin de la fonction donc avant qu'il 
+#soit oublié
+print (machin)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#exercice3 "travail dans fichier externe"
+def nombre_ligne(nom):
+    fichier = open(nom,"r",encoding="latin1")
+    lignes=fichier.readlines()
+    nombre=len(lignes)
+    fichier.close()
+    return nombre
+def remplacement(nom):
+    fichier=open(nom,"r",encoding="latin1")
+    fichier2=open(copie.txt,"rw",encoding="utf8")
+    n=nombre_ligne(nom)
+    for k in range(n):
+        ligne= fichier.readline()
+        if ligne[0]!="#":
+            fichier2.write(ligne)
+        fichier.close()
+        fichier2.close()
+        
+#prgm principal
+texte=nombre_ligne("ron.txt")
+print (texte)
